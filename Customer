@@ -1,0 +1,82 @@
+#%RAML 0.8
+title: Customer Service API
+baseUri: https://mocksvc.mulesoft.com/mocks/0327c6f9-aee9-47a9-bb7c-b11e09dd9d52/{v1} # baseUri: https://mocksvc.mulesoft.com/mocks/326821a0-1d21-43a5-80fc-7ff277c0cbe4/{v1} # baseUri: https://mocksvc.mulesoft.com/mocks/5838b6ad-bf8b-4962-9379-05ae80e90346/{v1} # baseUri: http://api.customers.com{v1}
+version: 1.0
+/Customers:
+    description: This is used for Customer details
+    get:
+      queryParameters: 
+        CustomerDetails:
+         displayName: Customer'sFirstName
+         required: false
+         example: "Ravneet"
+      responses: 
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                "FirstName":"Ravneet",
+                "LastName":"Kaur",
+                "Address":"11D,Lyton Street,Sydney"
+                }  
+    post:
+      body: 
+        application/json:
+          example: |
+            {
+                "FirstName":"Ravneet",
+                "LastName":"Kaur",
+                "Address":"11D,Lyton Street,Sydney"
+                } 
+      responses:
+        201:
+          headers: 
+            Content-Type:
+            Date:
+              type: string
+          body: 
+            application/json:
+              example: |
+                {
+                "message":"Customer got created"
+                } 
+    /{CustomerID}:
+    put:
+      body: 
+        application/json:
+          example: |
+                {
+                "FirstName":"Ravneet",
+                "LastName":"Kaur",
+                "Address":"1C,Breakfast Road,Sydney"
+                }
+      responses: 
+        202:
+          headers: 
+            Date:
+              type: string
+          body:
+            application/json:
+              example: |
+                      {
+                      "message":"Customer got Updated"
+                      }
+    delete:
+      description: This is used for deleting Customer details.
+      body: 
+        application/json:
+          example: |
+                  {
+                  "FirstName":"Ravneet",
+                  "LastName":"Kaur",
+                  "Address":"1C,Breakfast Road,Sydney"
+                  }
+      responses: 
+        203:
+          body: 
+            application/json:
+             example: |
+               {
+                      "message":"Customer got Deleted"
+                      }
